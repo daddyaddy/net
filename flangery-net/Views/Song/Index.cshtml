@@ -1,0 +1,49 @@
+﻿@model IEnumerable<flangery_net.SongModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Lista dodanych utworów</h1>
+
+<p>
+    @Html.ActionLink("Dodaj utwór", "Create", new { /* id=item.PrimaryKey */ }) |
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.cover)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.artist)
+            </th>
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <img src="@Url.Content(item.cover)" width="50" height="50" />
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.artist)
+                </td>
+
+                <td>
+                    @Html.ActionLink("Edytuj", "Edit", new { id=item.songId }) |
+                    @Html.ActionLink("Szczegóły", "Details", new { id=item.songId  })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
